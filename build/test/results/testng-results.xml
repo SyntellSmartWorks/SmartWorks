@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="S3 Test - Suite" duration-ms="47338" started-at="2019-01-14T09:48:02Z" finished-at="2019-01-14T09:48:50Z">
+    <groups>
+    </groups>
+    <test name="Regression" duration-ms="47338" started-at="2019-01-14T09:48:02Z" finished-at="2019-01-14T09:48:50Z">
+      <class name="smartworks.SmartWorks">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:smartworks.SmartWorks@543788f3]" name="openBrowser" is-config="true" duration-ms="35605" started-at="2019-01-14T11:48:02Z" finished-at="2019-01-14T11:48:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="addcus()[pri:0, instance:smartworks.SmartWorks@543788f3]" name="addcus" duration-ms="11726" started-at="2019-01-14T11:48:38Z" finished-at="2019-01-14T11:48:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addcus -->
+      </class> <!-- smartworks.SmartWorks -->
+    </test> <!-- Regression -->
+  </suite> <!-- S3 Test - Suite -->
+</testng-results>
