@@ -9,6 +9,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -19,7 +20,7 @@ import org.testng.annotations.Test;
  *
  * @author Reece
  */
-public class SmartWorks
+public class SmartWorks extends SmartWorksWindow
 {
     public static WebDriver dr;
     ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\Add Customer.html");
@@ -41,6 +42,8 @@ public class SmartWorks
         
         if(dr.findElements(By.xpath("//input[@name = 'txtUsername']")).size() > 0)
             {
+           /* dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
             dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
             dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
@@ -182,6 +185,7 @@ public class SmartWorks
             if(dr.findElements(By.xpath("//button[text() = 'Add']")).size() > 0)
             {
                 Thread.sleep(500);
+                dr.findElement(By.xpath("//button[text() = 'Add']")).sendKeys(Keys.PAGE_UP);
                 dr.findElement(By.xpath("//button[text() = 'Add']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Add Dispensing Point(s) screen");
             }
