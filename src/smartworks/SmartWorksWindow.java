@@ -37,8 +37,10 @@ public class SmartWorksWindow extends javax.swing.JFrame
 
         jframe = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        userName = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        userName = new javax.swing.JTextField();
         passWord = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
@@ -61,9 +63,29 @@ public class SmartWorksWindow extends javax.swing.JFrame
         jframe.setBackground(new java.awt.Color(63, 223, 238));
         jframe.setForeground(new java.awt.Color(93, 213, 241));
 
-        jLabel1.setText("USERNAME:");
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\SmartWorks\\thc.jpg")); // NOI18N
 
-        jLabel2.setText("PASSWORD:");
+        jPanel2.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel2.setForeground(new java.awt.Color(255, 0, 51));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 482, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel2.setText("USERNAME:");
+
+        jLabel3.setText("PASSWORD:");
+
+        userName.setToolTipText("");
+
+        passWord.setToolTipText("");
 
         jButton1.setText("START");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,33 +101,39 @@ public class SmartWorksWindow extends javax.swing.JFrame
             .addGroup(jframeLayout.createSequentialGroup()
                 .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jframeLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userName)
-                            .addComponent(passWord, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
+                            .addComponent(jLabel1)
+                            .addGroup(jframeLayout.createSequentialGroup()
+                                .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(userName)
+                                    .addComponent(passWord))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jframeLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jButton1)))
-                .addContainerGap(462, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jframeLayout.setVerticalGroup(
             jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jframeLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
                     .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(passWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         fileMenu.setMnemonic('f');
@@ -191,7 +219,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        username = userName.getText();
+      username = userName.getText();
         userName.setText(username);
         password = passWord.getText();
         passWord.setText(password);
@@ -201,7 +229,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
                 List<String> suites = Lists.newArrayList();
                 suites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWorks_Test.xml");//path to xml..
                 testng.setTestSuites(suites);
-                testng.run(); 
+                testng.run();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -252,6 +280,8 @@ public class SmartWorksWindow extends javax.swing.JFrame
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jframe;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
