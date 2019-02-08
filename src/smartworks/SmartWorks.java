@@ -55,10 +55,10 @@ public class SmartWorks extends SmartWorksWindow
         
         if(dr.findElements(By.xpath("//input[@name = 'txtUsername']")).size() > 0)
             {
-            /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);
+            /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");*/
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
             if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
