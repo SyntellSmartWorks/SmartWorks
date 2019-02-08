@@ -6,7 +6,7 @@
       <class name="smartworks.SmartWorks">
         <methods>
           <include name="openBrowser"/>
-          <include name="addcus"/>
+          <include name="addcus" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- smartworks.SmartWorks -->
     </classes>
