@@ -145,10 +145,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Status dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'TEST']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'Active']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'TEST']")).click();
+                dr.findElement(By.xpath("//li[text() = 'Active']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Meter Status dropdown");
             }
             else
@@ -189,15 +189,59 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Type dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'CONLOG 1PH COMMON BASE']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'LANDIS AND GEYR STS']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'CONLOG 1PH COMMON BASE']")).click();
+                dr.findElement(By.xpath("//li[text() = 'LANDIS AND GEYR STS']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Meter Type dropdown");
             }
             else
             {
                 test.log(LogStatus.FAIL, "Failed to select option from Meter Type dropdown");
+            }
+            
+            if(dr.findElements(By.xpath("//*[@id='ddlEditMtrPrpsPopup_VendingGateway_chosen']/a/div/b")).size() > 0)
+            {
+                Thread.sleep(500);
+                dr.findElement(By.xpath("//*[@id='ddlEditMtrPrpsPopup_VendingGateway_chosen']/a/div/b")).click();
+                test.log(LogStatus.PASS, "Successfully clicked Vending Gateway dropdown button");
+            }
+            else
+            {
+                test.log(LogStatus.FAIL, "Failed to click Vending Gateway dropdown button");
+            }
+            
+            if(dr.findElements(By.xpath("//li[text() = 'SGC:000266 KRN:1 TI:1']")).size() > 0)
+            {
+                Thread.sleep(500);
+                dr.findElement(By.xpath("//li[text() = 'SGC:000266 KRN:1 TI:1']")).click();
+                test.log(LogStatus.PASS, "Successfully selected option from Vending Gateway dropdown");
+            }
+            else
+            {
+                test.log(LogStatus.FAIL, "Failed to select option from Vending Gateway dropdown");
+            }
+            
+            if(dr.findElements(By.xpath("//*[@id='ddlEditMtrPrpsPopup_Profile_chosen']/a/div/b")).size() > 0)
+            {
+                Thread.sleep(500);
+                dr.findElement(By.xpath("//*[@id='ddlEditMtrPrpsPopup_Profile_chosen']/a/div/b")).click();
+                test.log(LogStatus.PASS, "Successfully clicked Meter Profile dropdown button");
+            }
+            else
+            {
+                test.log(LogStatus.FAIL, "Failed to click Meter Profile dropdown button");
+            }
+            
+            if(dr.findElements(By.xpath("//li[text() = '30 AMP METER PROFILE']")).size() > 0)
+            {
+                Thread.sleep(500);
+                dr.findElement(By.xpath("//li[text() = '30 AMP METER PROFILE']")).click();
+                test.log(LogStatus.PASS, "Successfully selected option from Meter Profile dropdown");
+            }
+            else
+            {
+                test.log(LogStatus.FAIL, "Failed to select option from Meter Profile dropdown");
             }
             
             if(dr.findElements(By.xpath("//input[@id= 'btnEditMtrPrpsPopup_OK']")).size() > 0)
@@ -224,10 +268,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Type dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'JAMES BROWN -']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'ZOLISA NCGENE - STELLENBOSCH']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'JAMES BROWN -']")).click();
+                dr.findElement(By.xpath("//li[text() = 'ZOLISA NCGENE - STELLENBOSCH']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Store Location dropdown");
             }
             else
