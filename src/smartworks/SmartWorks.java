@@ -11,6 +11,11 @@ import com.relevantcodes.extentreports.LogStatus;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
@@ -25,6 +30,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -36,14 +43,14 @@ import org.testng.annotations.Test;
 public class SmartWorks extends SmartWorksWindow
 {
     public static WebDriver dr;
-    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\Add Customer.html");
-    ExtentTest test = extent.startTest("Add Customer");
+    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\SmartWorks Add Customer.html");
+    ExtentTest test = extent.startTest("SmartWorks Add Customer");
     /**
      * @param args the command line arguments
      */
     
     @BeforeClass
-	public void openBrowser() 
+	public void openBrowser() throws InterruptedException
         {
             System.setProperty("webdriver.chrome.driver", "C:\\SmartWorks\\SmartWorks\\chromedriver.exe");
             //String URL = ip;
@@ -55,23 +62,30 @@ public class SmartWorks extends SmartWorksWindow
         
         if(dr.findElements(By.xpath("//input[@name = 'txtUsername']")).size() > 0)
             {
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);
-            /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");*/
+            /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Sihle");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Lisanda@02");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
-            if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
-            {
-                //Thread.sleep(500);
-                String text = dr.findElement(By.xpath("//span[@class = 'ErrorWrap']")).getText();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
+                {
+                    //Thread.sleep(500);
+                    String text = dr.findElement(By.xpath("//span[@class = 'ErrorWrap']")).getText();
+                    test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                }
+                
+                if(dr.findElements(By.xpath("//span[contains(text(), 'Vendor')]")).size() > 0)
+                {
+                  Thread.sleep(500);
+                  dr.findElement(By.xpath("//*[@id='top-nav']/ul/li/a/span/i")).click();
+                  dr.findElement(By.xpath("//a[text() = ' Customer Support Role']")).click();
+                  test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                }
             }
-            }
-            
 	}
     @Test(dataProvider="empLogin")
-    public void addcus(String Meter, String SPT, String Region, String DPT, String CAT, String BP) throws Exception
+    public void addcus(String Meter, String SPT, String Region, String DPT, String CAT, String BP, String tariff) throws Exception
 	
     {
       Assert.assertTrue(true);
@@ -89,7 +103,7 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//span[text() = 'Manage Meters']")).size() > 0)
+            /*if(dr.findElements(By.xpath("//span[text() = 'Manage Meters']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Manage Meters']")).click();
@@ -290,6 +304,15 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click on Date icon");
             }
             
+            /*if(dr.findElements(By.xpath("//*[@id='dx-5236d6c4-2922-14d4-33c0-db24b55e95bc']/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/div/div[1]/div")).size() > 0)
+            {
+                Thread.sleep(500);
+                dr.findElement(By.xpath("//*[@id='dx-5236d6c4-2922-14d4-33c0-db24b55e95bc']/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/div/div[1]/div")).click();
+            }
+            
+            String hour = dr.findElement(By.xpath("//input[@max= '24']")).getAttribute("aria-valuenow");
+            String minutes = dr.findElement(By.xpath("//input[@max= '60']")).getAttribute("aria-valuenow");*/
+                
             if(dr.findElements(By.xpath("//span[text() = 'Done']")).size() > 0)
             {
                 Thread.sleep(500);
@@ -323,9 +346,20 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to confirm Save Division details");
             }
         //==========================ADD SERVICE POINTS========================================================//
-        
-            dr.findElement(By.xpath("//li[@id= 'menu40000']//a[@href = '#']")).sendKeys(Keys.PAGE_UP);
-                    
+            
+           /* String time = hour+":"+minutes;
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+            DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            String formattedDate = dateFormat.format(date);*/
+            
+            /*LocalTime now = LocalTime.now();
+            LocalTime  limit = LocalTime.parse(time);
+            Boolean isEqual = now.equals(limit);*/
+            if(dr.findElements(By.xpath("//li[@id= 'menu40000']//a[@href = '#']")).size() > 0)
+            {    
+                dr.findElement(By.xpath("//li[@id= 'menu40000']//a[@href = '#']")).sendKeys(Keys.PAGE_UP);
+            }       
             if(dr.findElements(By.xpath("//li[@id= 'menu30000']//a[@href = '#']")).size() > 0)
             {
                 Thread.sleep(500);
@@ -658,7 +692,7 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to select Consumer Account type");
             }
             
-            if(dr.findElements(By.xpath("//input[@id= 'txtCustAccRef']")).size() > 0)
+          /*  if(dr.findElements(By.xpath("//input[@id= 'txtCustAccRef']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id= 'txtCustAccRef']")).sendKeys(Meter);
@@ -667,7 +701,7 @@ public class SmartWorks extends SmartWorksWindow
             else
             {
                 test.log(LogStatus.FAIL, "Failed to enter Consumer Account reference");
-            }
+            }*/
             
             if(dr.findElements(By.xpath("//*[@id='ddlBillingProfile_chosen']/a/div/b")).size() > 0)
             {
@@ -815,10 +849,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to navigate to tariff profile");
             }
             
-            if(dr.findElements(By.xpath("//select[@id = 'ddlTrfSearchPopup_TrfProfile']//option[text() = 'Domestic Low 01 (Dom 2)']")).size() > 0)
+            if(dr.findElements(By.xpath("//select[@id = 'ddlTrfSearchPopup_TrfProfile']//option[text() = '"+tariff+"']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//select[@id = 'ddlTrfSearchPopup_TrfProfile']//option[text() = 'Domestic Low 01 (Dom 2)']")).click();
+                dr.findElement(By.xpath("//select[@id = 'ddlTrfSearchPopup_TrfProfile']//option[text() = '"+tariff+"']")).click();
                 Thread.sleep(500);
                 test.log(LogStatus.PASS, "Successfully selected tariff profile");
             }
@@ -883,6 +917,15 @@ public class SmartWorks extends SmartWorksWindow
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@name= 'ctl00$btnModalSuccessOkWithPostback']")).click();
             }
+    }
+    @AfterTest
+    void terminate() throws Exception
+    {
+      SmartWorks_Logout logout = new SmartWorks_Logout();
+      logout.logout();
+      extent.endTest(test);
+      extent.flush();
+      dr.quit();
     }
     
     @DataProvider(name="empLogin")

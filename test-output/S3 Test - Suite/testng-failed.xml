@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [S3 Test - Suite]">
-  <test name="Regression(failed)">
+  <test name="SmartWorks Auxiliaries(failed)">
     <classes>
-      <class name="smartworks.SmartWorks">
+      <class name="smartworks.SmartWorks_Auxiliaries">
         <methods>
+          <include name="addcus" invocation-numbers="1"/>
           <include name="openBrowser"/>
-          <include name="addcus" invocation-numbers="0 1"/>
         </methods>
-      </class> <!-- smartworks.SmartWorks -->
+      </class> <!-- smartworks.SmartWorks_Auxiliaries -->
     </classes>
-  </test> <!-- Regression(failed) -->
+  </test> <!-- SmartWorks Auxiliaries(failed) -->
 </suite> <!-- Failed suite [S3 Test - Suite] -->

@@ -6,7 +6,9 @@
 package smartworks;
 
 import com.beust.jcommander.internal.Lists;
+import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 
@@ -18,6 +20,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
 {
     static String username = "";
     static String password = "";
+    static String testcase = "";
 
     /**
      * Creates new form SmartWorksWindow
@@ -38,6 +41,8 @@ public class SmartWorksWindow extends javax.swing.JFrame
         jframe = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        Case = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         userName = new javax.swing.JTextField();
@@ -65,18 +70,36 @@ public class SmartWorksWindow extends javax.swing.JFrame
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\SmartWorks\\thc.jpg")); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 51));
-        jPanel2.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel2.setBackground(new java.awt.Color(231, 61, 85));
+        jPanel2.setForeground(new java.awt.Color(231, 61, 85));
+
+        Case.addItem("Customer Setup");
+        Case.addItem("Vending Collect");
+        Case.addItem("Vending Trial");
+        Case.addItem("Vending FBE");
+        Case.addItem("Auxiliary Setup");
+
+        jLabel4.setText("Test Case:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Case, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Case, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel2.setText("USERNAME:");
@@ -101,21 +124,18 @@ public class SmartWorksWindow extends javax.swing.JFrame
             .addGroup(jframeLayout.createSequentialGroup()
                 .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jframeLayout.createSequentialGroup()
+                        .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addGroup(jframeLayout.createSequentialGroup()
-                                .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userName)
-                                    .addComponent(passWord))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(userName, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(passWord)))
                     .addGroup(jframeLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton1))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jframeLayout.setVerticalGroup(
@@ -130,7 +150,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
                 .addGroup(jframeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(passWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,13 +243,119 @@ public class SmartWorksWindow extends javax.swing.JFrame
         userName.setText(username);
         password = passWord.getText();
         passWord.setText(password);
+        testcase = Arrays.toString(Case.getSelectedObjects());
+        testcase = testcase.replace("[", "");
+        testcase = testcase.replace("]", "");
         
-        TestListenerAdapter tla = new TestListenerAdapter();
-                TestNG testng = new TestNG();
-                List<String> suites = Lists.newArrayList();
-                suites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWorks_Test.xml");//path to xml..
-                testng.setTestSuites(suites);
-                testng.run();  
+        
+        String str = testcase;
+       switch(str)
+       {
+           case "Customer Setup":
+               if(userName == null || userName.getText() == null || userName.getText().trim().length()==0)
+                {
+                    JOptionPane.showMessageDialog(userName, "Please enter Username");
+
+                }
+                    else if(passWord == null || passWord.getText() == null || passWord.getText().trim().length()==0)
+                    {
+                        JOptionPane.showMessageDialog(passWord, "Please enter Password");
+                    }
+               else
+                    {
+                        TestListenerAdapter cs = new TestListenerAdapter();
+                        TestNG testng = new TestNG();
+                        List<String> cssuites = Lists.newArrayList();
+                        cssuites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWorks_Test.xml");//path to xml..
+                        testng.setTestSuites(cssuites);
+                        testng.run();
+                    }
+                break;
+                
+                case "Vending Collect":
+                    if(userName == null || userName.getText() == null || userName.getText().trim().length()==0)
+                    {
+                        JOptionPane.showMessageDialog(userName, "Please enter Username");
+
+                    }
+                        else if(passWord == null || passWord.getText() == null || passWord.getText().trim().length()==0)
+                        {
+                            JOptionPane.showMessageDialog(passWord, "Please enter Password");
+                        }
+                    else
+                        {
+                            TestListenerAdapter vc = new TestListenerAdapter();
+                            TestNG vencol = new TestNG();
+                            List<String> vcsuites = Lists.newArrayList();
+                            vcsuites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWorks_Vending_Collect.xml");//path to xml..
+                            vencol.setTestSuites(vcsuites);
+                            vencol.run();
+                        }
+                break;
+                
+                case "Vending Trial":
+                    if(userName == null || userName.getText() == null || userName.getText().trim().length()==0)
+                    {
+                        JOptionPane.showMessageDialog(userName, "Please enter Username");
+
+                    }
+                        else if(passWord == null || passWord.getText() == null || passWord.getText().trim().length()==0)
+                        {
+                            JOptionPane.showMessageDialog(passWord, "Please enter Password");
+                        }
+                    else
+                        {
+                            TestListenerAdapter vt = new TestListenerAdapter();
+                            TestNG venctri = new TestNG();
+                            List<String> vtsuites = Lists.newArrayList();
+                            vtsuites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWorks_Trial_Vending.xml");//path to xml..
+                            venctri.setTestSuites(vtsuites);
+                            venctri.run();
+                        }
+                break;
+                
+                case "Vending FBE":
+                    if(userName == null || userName.getText() == null || userName.getText().trim().length()==0)
+                    {
+                        JOptionPane.showMessageDialog(userName, "Please enter Username");
+
+                    }
+                        else if(passWord == null || passWord.getText() == null || passWord.getText().trim().length()==0)
+                        {
+                            JOptionPane.showMessageDialog(passWord, "Please enter Password");
+                        }
+                        else
+                            {
+                              TestListenerAdapter fbe = new TestListenerAdapter();
+                              TestNG venfbe = new TestNG();
+                              List<String> vfbesuites = Lists.newArrayList();
+                              vfbesuites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWorks_FBE_Vending.xml");//path to xml..
+                              venfbe.setTestSuites(vfbesuites);
+                              venfbe.run();
+                            }
+                break;
+                
+                case "Auxiliary Setup":
+                    if(userName == null || userName.getText() == null || userName.getText().trim().length()==0)
+                    {
+                        JOptionPane.showMessageDialog(userName, "Please enter Username");
+
+                    }
+                        else if(passWord == null || passWord.getText() == null || passWord.getText().trim().length()==0)
+                        {
+                            JOptionPane.showMessageDialog(passWord, "Please enter Password");
+                        }
+                        else
+                            {
+                              TestListenerAdapter as = new TestListenerAdapter();
+                              TestNG ass = new TestNG();
+                              List<String> assuites = Lists.newArrayList();
+                              assuites.add("C:\\SmartWorks\\SmartWorks\\test\\SmartWork_Auxiliaries.xml");//path to xml..
+                              ass.setTestSuites(assuites);
+                              ass.run();
+                            }
+                    break;
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -268,6 +394,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> Case;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
@@ -281,6 +408,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jframe;
     private javax.swing.JMenuBar menuBar;
