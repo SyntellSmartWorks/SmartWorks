@@ -54,7 +54,7 @@ public class SmartWorks extends SmartWorksWindow
         {
             System.setProperty("webdriver.chrome.driver", "C:\\SmartWorks\\SmartWorks\\chromedriver.exe");
             //String URL = ip;
-            String defURL = "http://syn-tst-net-smw.syntell.net/STELLBTEST/WA/SB/AppStart/Login.aspx";
+            String defURL = "http://syn-tst-net-smw.syntell.net/BREEDETEST/WA/SB/AppStart/Login.aspx";
             dr = new ChromeDriver();
         
           dr.get(defURL);
@@ -64,8 +64,8 @@ public class SmartWorks extends SmartWorksWindow
             {
             /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
             dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Sihle");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Lisanda@02");
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
                 if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
@@ -103,7 +103,7 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            /*if(dr.findElements(By.xpath("//span[text() = 'Manage Meters']")).size() > 0)
+            if(dr.findElements(By.xpath("//span[text() = 'Manage Meters']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Manage Meters']")).click();
@@ -159,10 +159,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Status dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'Active']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'ACTIVE']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'Active']")).click();
+                dr.findElement(By.xpath("//li[text() = 'ACTIVE']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Meter Status dropdown");
             }
             else
@@ -203,10 +203,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Type dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'LANDIS AND GEYR STS']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'PLESSEY 3 PHASE']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'LANDIS AND GEYR STS']")).click();
+                dr.findElement(By.xpath("//li[text() = 'PLESSEY 3 PHASE']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Meter Type dropdown");
             }
             else
@@ -225,10 +225,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Vending Gateway dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'SGC:000266 KRN:1 TI:1']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'SGC:000314 KRN:1 TI:1']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'SGC:000266 KRN:1 TI:1']")).click();
+                dr.findElement(By.xpath("//li[text() = 'SGC:000314 KRN:1 TI:1']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Vending Gateway dropdown");
             }
             else
@@ -247,10 +247,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Profile dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = '30 AMP METER PROFILE']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'ELEC: MAX DEMAND=30']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = '30 AMP METER PROFILE']")).click();
+                dr.findElement(By.xpath("//li[text() = 'ELEC: MAX DEMAND=30']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Meter Profile dropdown");
             }
             else
@@ -282,10 +282,10 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Meter Type dropdown button");
             }
             
-            if(dr.findElements(By.xpath("//li[text() = 'ZOLISA NCGENE - STELLENBOSCH']")).size() > 0)
+            if(dr.findElements(By.xpath("//li[text() = 'STORE - Worcester']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//li[text() = 'ZOLISA NCGENE - STELLENBOSCH']")).click();
+                dr.findElement(By.xpath("//li[text() = 'STORE - Worcester']")).click();
                 test.log(LogStatus.PASS, "Successfully selected option from Store Location dropdown");
             }
             else
@@ -736,7 +736,7 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Service Account(s) Add button");
             }
             
-            if(dr.findElements(By.xpath("//select[@name = 'ctl00$cphPage$ucCSA-2$ddlRes']//option[text() = 'Electricity']")).size() > 0)
+          /*  if(dr.findElements(By.xpath("//select[@name = 'ctl00$cphPage$ucCSA-2$ddlRes']//option[text() = 'Electricity']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//select[@name = 'ctl00$cphPage$ucCSA-2$ddlRes']//option[text() = 'Electricity']")).click();
@@ -745,7 +745,7 @@ public class SmartWorks extends SmartWorksWindow
             else
             {
                 test.log(LogStatus.FAIL, "Failed to select Service Account Resource Type");
-            }
+            }*/
             
             if(dr.findElements(By.xpath("//span//a[text() = ' Select']")).size() > 0)
             {

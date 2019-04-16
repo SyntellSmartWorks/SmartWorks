@@ -18,9 +18,9 @@
     </test>
     -->
     
-    <test name="SmartWorks Customer Setup">
+    <test name="SmartWorks Services Rendered Adjustment">
         <classes>
-           <class name="smartworks.SmartWorks"/>
+           <class name="smartworks.SmartWorks_ServicesRenderedAdjustment"/>
         </classes>
     </test>
 </suite>

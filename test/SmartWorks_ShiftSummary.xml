@@ -18,9 +18,9 @@
     </test>
     -->
     
-    <test name="SmartWorks Add Agent">
+    <test name="SmartWorks Shift Summary Report">
         <classes>
-           <class name="smartworks.SmartWorks_Agents"/>
+           <class name="smartworks.SmartWorks_ShiftSummary"/>
         </classes>
     </test>
 </suite>

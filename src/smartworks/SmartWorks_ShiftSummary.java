@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
  *
  * @author Reece
  */
-public class SmartWorks_ServicesRenderedAdjustment 
+public class SmartWorks_ShiftSummary 
 {
     public static WebDriver dr;
     ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\Add Customer.html");
@@ -42,7 +42,7 @@ public class SmartWorks_ServicesRenderedAdjustment
         {
             System.setProperty("webdriver.chrome.driver", "C:\\SmartWorks\\SmartWorks\\chromedriver.exe");
             //String URL = ip;
-            String defURL = "http://syn-tst-net-smw.syntell.net/STELLBTEST/WA/SB/AppStart/Login.aspx";
+            String defURL = "https://preprod.kanismartworks.com/STELLB/WA/SB/AppStart/Login.aspx";
             dr = new ChromeDriver();
         
           dr.get(defURL);
@@ -52,8 +52,8 @@ public class SmartWorks_ServicesRenderedAdjustment
             {
             /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
             dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Sihle");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Lisanda@02");
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
                 if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
@@ -63,11 +63,11 @@ public class SmartWorks_ServicesRenderedAdjustment
                     test.log(LogStatus.PASS, "Successfully navigated to Meters");
                 }
                 
-                if(dr.findElements(By.xpath("//span[contains(text(), 'Vendor')]")).size() > 0)
+                if(dr.findElements(By.xpath("//span[contains(text(), 'Customer')]")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//*[@id='top-nav']/ul/li/a/span/i")).click();
-                dr.findElement(By.xpath("//a[text() = ' Customer Support Role']")).click();
+                dr.findElement(By.xpath("//a[text() = ' Vendor']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             }
@@ -80,10 +80,10 @@ public class SmartWorks_ServicesRenderedAdjustment
         String result = "";
  
         //==========================ADD METER========================================================//
-            if(dr.findElements(By.xpath("//span[text() = 'Consumers']")).size() > 0)
+            if(dr.findElements(By.xpath("//span[text() = 'Shift Summary']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//span[text() = 'Consumers']")).click();
+                dr.findElement(By.xpath("//span[text() = 'Shift Summary']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
@@ -91,10 +91,11 @@ public class SmartWorks_ServicesRenderedAdjustment
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//span[text() = 'Accounts']")).size() > 0)
+            if(dr.findElements(By.xpath("//*[@id='divOperator']/div/div/button/b")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//span[text() = 'Accounts']")).click();
+                dr.findElement(By.xpath("//*[@id='divOperator']/div/div/button/b")).click();
+                dr.findElement(By.xpath("//label[text() = '  Select all']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
@@ -102,10 +103,10 @@ public class SmartWorks_ServicesRenderedAdjustment
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//span[text() = 'Adjustments']")).size() > 0)
+            if(dr.findElements(By.xpath("//input[@id = 'btnView']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//span[text() = 'Adjustments']")).click();
+                dr.findElement(By.xpath("//input[@id = 'btnView']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
@@ -113,10 +114,23 @@ public class SmartWorks_ServicesRenderedAdjustment
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//span[text() = 'Services Rendered']")).size() > 0)
+            if(dr.findElements(By.xpath("//input[@id = 'btnModalSuccessOkNoPostback']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//span[text() = 'Services Rendered']")).click();
+                dr.findElement(By.xpath("//input[@id = 'btnModalSuccessOkNoPostback']")).click();
+                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+            }
+            else
+            {
+                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+            }
+            
+            Thread.sleep(2000);
+            dr.quit();
+            
+            
+            /*if(dr.findElements(By.xpath("//a[contains(text(), 'Meter')]")).size() > 0)
+            {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[@class = 'caret']")).click();
                 dr.findElement(By.xpath("//a[contains(text(), 'Meter')]")).click();
@@ -149,11 +163,10 @@ public class SmartWorks_ServicesRenderedAdjustment
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//*[@id='ddlAdjReason_chosen']/a/div/b")).size() > 0)
+            if(dr.findElements(By.xpath("//input[@id = 'btnNew']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//*[@id='ddlAdjReason_chosen']/a/div/b")).click();
-                dr.findElement(By.xpath("//li[text() = 'Consumer Account Collection']")).click();
+                dr.findElement(By.xpath("//input[@id = 'btnNew']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
@@ -161,13 +174,11 @@ public class SmartWorks_ServicesRenderedAdjustment
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//td[contains(text(), 'Per')]/..//input[@id = 'txtAdjAmt']")).size() > 0)
+            if(dr.findElements(By.xpath("//*[@id='ddlAuxAccDetails_Type_chosen']/a/div/b")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//td[contains(text(), 'Per')]/..//input[@id = 'txtAdjAmt']")).sendKeys("5000,00");
-                dr.findElement(By.xpath("//td[contains(text(), 'Tax')]/..//input[@id = 'txtAdjAmt']")).sendKeys("15");
-                dr.findElement(By.xpath("//td[contains(text(), 'Monthly')]/..//input[@id = 'txtAdjAmt']")).sendKeys("100,00");
-                dr.findElement(By.xpath("//td[contains(text(), 'Tax')]/..//input[@id = 'txtAdjAmt']")).sendKeys("15");
+                dr.findElement(By.xpath("//*[@id='ddlAuxAccDetails_Type_chosen']/a/div/b")).click();
+                dr.findElement(By.xpath("//li[text() = 'General Debt']")).click();
                 test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
@@ -175,7 +186,7 @@ public class SmartWorks_ServicesRenderedAdjustment
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            /*if(dr.findElements(By.xpath("//div[@class = 'dx-dropdowneditor-icon']")).size() > 0)
+            if(dr.findElements(By.xpath("//div[@class = 'dx-dropdowneditor-icon']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//div[@class = 'dx-dropdowneditor-icon']")).click();
@@ -247,8 +258,6 @@ public class SmartWorks_ServicesRenderedAdjustment
                 actions.sendKeys(Keys.PAGE_UP);
                 actions.build().perform();
                 Thread.sleep(500);*/
-            
-            dr.quit();
     }
 
     @DataProvider(name="empLogin")

@@ -10,25 +10,12 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static smartworks.SmartWorks.dr;
 
 /**
  *
@@ -58,8 +45,8 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
             {
             /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
             dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Sihle");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Lisanda@02");
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
                 if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
