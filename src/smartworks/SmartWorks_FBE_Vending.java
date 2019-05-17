@@ -11,9 +11,11 @@ import com.relevantcodes.extentreports.LogStatus;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import static smartworks.SmartWorks_Auxiliaries.dr;
@@ -25,8 +27,8 @@ import static smartworks.SmartWorks_Auxiliaries.dr;
 public class SmartWorks_FBE_Vending 
 {
     public static WebDriver dr;
-    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\Add Customer.html");
-    ExtentTest test = extent.startTest("Add Customer");
+    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\SmartWorks FBE Vend.html");
+    ExtentTest test = extent.startTest("FBE");
     /**
      * @param args the command line arguments 01010101011
      */
@@ -36,7 +38,7 @@ public class SmartWorks_FBE_Vending
         {
             System.setProperty("webdriver.chrome.driver", "C:\\SmartWorks\\SmartWorks\\chromedriver.exe");
             //String URL = ip;
-            String defURL = "http://syn-tst-net-smw.syntell.net/STELLBTEST/WA/SB/AppStart/Login.aspx";
+            String defURL = "http://syn-tst-net-smw.syntell.net/BREEDETEST/WA/SB/AppStart/Login.aspx";
             dr = new ChromeDriver();
         
           dr.get(defURL);
@@ -46,8 +48,8 @@ public class SmartWorks_FBE_Vending
             {
             /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
             dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Sihle");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Lisanda@02");
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
                 if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
@@ -62,7 +64,7 @@ public class SmartWorks_FBE_Vending
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//*[@id='top-nav']/ul/li/a/span/i")).click();
                 dr.findElement(By.xpath("//a[text() = 'Vendor']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                //test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             }
         }
@@ -78,7 +80,7 @@ public class SmartWorks_FBE_Vending
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Revenue Collection']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully Revenue Collection");
             }
             else
             {
@@ -88,8 +90,8 @@ public class SmartWorks_FBE_Vending
             if(dr.findElements(By.xpath("//input[@id = 'txtSearchMsno']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//input[@id = 'txtSearchMsno']")).sendKeys("01076035136");
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                dr.findElement(By.xpath("//input[@id = 'txtSearchMsno']")).sendKeys("01027550555");
+                test.log(LogStatus.PASS, "Successfully entered Meter Number");
             }
             else
             {
@@ -100,7 +102,7 @@ public class SmartWorks_FBE_Vending
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@value= 'Search']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully searched for meter");
             }
             else
             {
@@ -118,11 +120,12 @@ public class SmartWorks_FBE_Vending
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }*/
             
-            if(dr.findElements(By.xpath("//a[@id= 'btnFbr']")).size() > 0)
+            if(dr.findElements(By.xpath("//span[text()= 'FBE']")).size() > 0)
             {
+                //dr.findElement(By.xpath("//input[@id= 'txtAmount']")).sendKeys(Keys.PAGE_DOWN);
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//a[@id= 'btnFbr']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                dr.findElement(By.xpath("//span[text()= 'FBE']")).click();
+                test.log(LogStatus.PASS, "Successfully clicked FBR");
             }
             else
             {
@@ -133,11 +136,11 @@ public class SmartWorks_FBE_Vending
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id= 'btnModalConfirmOkNoPostBack']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                //test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
-                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+              //  test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
             if(dr.findElements(By.xpath("//input[@value= 'Back']")).size() > 0)
@@ -146,12 +149,22 @@ public class SmartWorks_FBE_Vending
                 Robot r = new Robot();
                 r.keyPress(KeyEvent.VK_ESCAPE);
                 r.keyRelease(KeyEvent.VK_ESCAPE);
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully completed FBR Vend");
             }
             else
             {
-                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+             //   test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
+    }
+    
+    @AfterTest
+    void terminate() throws Exception
+    {
+      //SmartWorks_Logout logout = new SmartWorks_Logout();
+      //logout.logout();
+      extent.endTest(test);
+      extent.flush();
+      dr.quit();
     }
 
    /* @DataProvider(name="empLogin")

@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -34,8 +35,8 @@ import static smartworks.SmartWorks.dr;
 public class SmartWorks_Auxiliaries 
 {
     public static WebDriver dr;
-    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\Add Customer.html");
-    ExtentTest test = extent.startTest("Add Customer");
+    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\SmartWorks Add Debt.html");
+    ExtentTest test = extent.startTest("DEBT");
     /**
      * @param args the command line arguments 01010101011
      */
@@ -45,7 +46,7 @@ public class SmartWorks_Auxiliaries
         {
             System.setProperty("webdriver.chrome.driver", "C:\\SmartWorks\\SmartWorks\\chromedriver.exe");
             //String URL = ip;
-            String defURL = "http://syn-tst-net-smw.syntell.net/STELLBTEST/WA/SB/AppStart/Login.aspx";
+            String defURL = "http://syn-tst-net-smw.syntell.net/BREEDETEST/WA/SB/AppStart/Login.aspx";
             dr = new ChromeDriver();
         
           dr.get(defURL);
@@ -55,8 +56,8 @@ public class SmartWorks_Auxiliaries
             {
             /*dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys(username);
             dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys(password);*/
-            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Sihle");
-            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Lisanda@02");
+            dr.findElement(By.xpath("//input[@name = 'txtUsername']")).sendKeys("Reece");
+            dr.findElement(By.xpath("//input[@name = 'txtPassword']")).sendKeys("Reece@01");
             dr.findElement(By.xpath("//input[@name = 'btnLoginSubmit']")).click();
             test.log(LogStatus.PASS, "Successfully signed into SmartWorks");
                 if(dr.findElements(By.xpath("//span[@class = 'ErrorWrap']")).size() > 0)
@@ -71,7 +72,7 @@ public class SmartWorks_Auxiliaries
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//*[@id='top-nav']/ul/li/a/span/i")).click();
                 dr.findElement(By.xpath("//a[text() = ' Customer Support Role']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                //test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             }
         }
@@ -87,7 +88,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Consumers']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully navigated to Consumers");
             }
             else
             {
@@ -98,7 +99,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Accounts']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully navigated to Accounts");
             }
             else
             {
@@ -109,7 +110,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Auxiliaries']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully navigated to Auxiliaries");
             }
             else
             {
@@ -121,7 +122,7 @@ public class SmartWorks_Auxiliaries
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[@class = 'caret']")).click();
                 dr.findElement(By.xpath("//a[contains(text(), 'Meter')]")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+               // test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
@@ -132,29 +133,29 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'txtSearchMsno']")).sendKeys(Meter);
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully entered Meter number");
             }
             else
             {
-                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+                test.log(LogStatus.FAIL, "Failed to enter Meter number");
             }
             
             if(dr.findElements(By.xpath("//input[@id = 'btnFind']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'btnFind']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully searched for Meter");
             }
             else
             {
-                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+                test.log(LogStatus.FAIL, "Failed to search for Meter");
             }
             
             if(dr.findElements(By.xpath("//input[@id = 'btnNew']")).size() > 0)
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'btnNew']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+               // test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
@@ -166,7 +167,7 @@ public class SmartWorks_Auxiliaries
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//*[@id='ddlAuxAccDetails_Type_chosen']/a/div/b")).click();
                 dr.findElement(By.xpath("//li[text() = 'General Debt']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully selected Debt Type");
             }
             else
             {
@@ -178,7 +179,7 @@ public class SmartWorks_Auxiliaries
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//div[@class = 'dx-dropdowneditor-icon']")).click();
                 dr.findElement(By.xpath("//span[text() = 'Done']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                //test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
@@ -190,7 +191,7 @@ public class SmartWorks_Auxiliaries
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'txtAuxAccDetails_OpeningBal']")).sendKeys(dbtam);
                 dr.findElement(By.xpath("//input[@id = 'txtAuxAccDetails_OpeningBal']")).sendKeys(Keys.PAGE_DOWN);
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully entered Debt Balance");
             }
             else
             {
@@ -201,7 +202,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'txtAuxAccDetails_CollectPerc']")).sendKeys(dbtcol);
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully Debt Collection amount");
             }
             else
             {
@@ -212,7 +213,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'btnAuxDetailsSave']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+               // test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
@@ -223,7 +224,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'btnModalConfirmOK']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+              //  test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
@@ -234,7 +235,7 @@ public class SmartWorks_Auxiliaries
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id = 'btnModalSuccessOkNoPostback']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully added Debt to Meter");
             }
             else
             {
@@ -245,6 +246,16 @@ public class SmartWorks_Auxiliaries
                 actions.sendKeys(Keys.PAGE_UP);
                 actions.build().perform();
                 Thread.sleep(500);
+    }
+    
+    @AfterTest
+    void terminate() throws Exception
+    {
+      //SmartWorks_Logout logout = new SmartWorks_Logout();
+     // logout.logout();
+      extent.endTest(test);
+      extent.flush();
+      dr.quit();
     }
 
     @DataProvider(name="empLogin")

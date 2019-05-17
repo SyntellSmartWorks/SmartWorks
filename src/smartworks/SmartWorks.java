@@ -429,6 +429,7 @@ public class SmartWorks extends SmartWorksWindow
             if(dr.findElements(By.xpath("//span[text() = '- SELECT -']/../..//li[text() = '"+Region+"']")).size() > 0)
             {
                 Thread.sleep(500);
+                dr.findElement(By.xpath("//*[@id='ddlRegion_chosen']/a/div/b")).click();
                 dr.findElement(By.xpath("//span[text() = '- SELECT -']/../..//li[text() = '"+Region+"']")).click();
                 test.log(LogStatus.PASS, "Successfully selected Service Point region");
             }
@@ -598,6 +599,7 @@ public class SmartWorks extends SmartWorksWindow
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//button[text() = 'Add']")).sendKeys(Keys.PAGE_DOWN);
+                Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@value = 'Save']")).click();
                 test.log(LogStatus.PASS, "Successfully clicked on Service Points Save button");
             }
@@ -736,17 +738,7 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to click Service Account(s) Add button");
             }
             
-          /*  if(dr.findElements(By.xpath("//select[@name = 'ctl00$cphPage$ucCSA-2$ddlRes']//option[text() = 'Electricity']")).size() > 0)
-            {
-                Thread.sleep(500);
-                dr.findElement(By.xpath("//select[@name = 'ctl00$cphPage$ucCSA-2$ddlRes']//option[text() = 'Electricity']")).click();
-                test.log(LogStatus.PASS, "Successfully selected Service Account Resource Type");
-            }
-            else
-            {
-                test.log(LogStatus.FAIL, "Failed to select Service Account Resource Type");
-            }*/
-            
+        
             if(dr.findElements(By.xpath("//span//a[text() = ' Select']")).size() > 0)
             {
                 Thread.sleep(500);
@@ -824,18 +816,7 @@ public class SmartWorks extends SmartWorksWindow
                 test.log(LogStatus.FAIL, "Failed to confirm association of Consumer Account meter");
             }
             //======================================BACK TO SERVICE ACCOUNTS DETAILS========================================//
-            if(dr.findElements(By.xpath("//select[@id = 'ctl00_cphPage_ucCSA-1_ddlRes']//option[text() = 'Electricity']")).size() > 0)
-            {
-                Thread.sleep(500);
-                dr.findElement(By.xpath("//select[@id = 'ctl00_cphPage_ucCSA-1_ddlRes']//option[text() = 'Electricity']")).click();
-                Thread.sleep(500);
-              //  dr.findElement(By.xpath("//*[@id='divServStartDateBox']/div[1]/div/div[2]/div/div/div")).click();
-                test.log(LogStatus.PASS, "Successfully selected Service Account Resource type");
-            }
-            else
-            {
-                test.log(LogStatus.FAIL, "Failed to select Service Account Resource type");
-            }
+           
             
             if(dr.findElements(By.xpath("//a[@id = 'lnkTrfSchedule']")).size() > 0)
             {
@@ -921,8 +902,8 @@ public class SmartWorks extends SmartWorksWindow
     @AfterTest
     void terminate() throws Exception
     {
-      SmartWorks_Logout logout = new SmartWorks_Logout();
-      logout.logout();
+     // SmartWorks_Logout logout = new SmartWorks_Logout();
+      //logout.logout();
       extent.endTest(test);
       extent.flush();
       dr.quit();

@@ -6,6 +6,7 @@
 package smartworks;
 
 import com.beust.jcommander.internal.Lists;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
     static String username = "";
     static String password = "";
     static String testcase = "";
+    static ArrayList<String> reportsel = new ArrayList<>();
 
     /**
      * Creates new form SmartWorksWindow
@@ -43,6 +45,9 @@ public class SmartWorksWindow extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         Case = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        Prepay = new javax.swing.JCheckBox();
+        Service = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         userName = new javax.swing.JTextField();
@@ -72,6 +77,15 @@ public class SmartWorksWindow extends javax.swing.JFrame
 
         jPanel2.setBackground(new java.awt.Color(231, 61, 85));
         jPanel2.setForeground(new java.awt.Color(231, 61, 85));
+        jPanel2.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                Service(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         Case.addItem("Customer Setup");
         Case.addItem("Vending Collect");
@@ -81,24 +95,52 @@ public class SmartWorksWindow extends javax.swing.JFrame
 
         jLabel4.setText("Test Case:");
 
+        jLabel5.setText("REPORTS");
+
+        Prepay.setText("Prepayment Usage Chart");
+        Prepay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Prepay(evt);
+            }
+        });
+
+        Service.setText("Service Account Balance Chart");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Case, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Case, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Prepay))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Service)))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Case, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(Case, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Prepay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Service)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -358,6 +400,24 @@ public class SmartWorksWindow extends javax.swing.JFrame
        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void Prepay(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prepay
+        // TODO add your handling code here:
+        String prep = "Prepayment Usage Chart";
+        if(Prepay.isSelected())
+        {
+            reportsel.add(prep);
+        }
+    }//GEN-LAST:event_Prepay
+
+    private void Service(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_Service
+        // TODO add your handling code here:
+        String serv = "Service Account Balance Chart";
+        if(Prepay.isSelected())
+        {
+            reportsel.add(serv);
+        }
+    }//GEN-LAST:event_Service
+
     /**
      * @param args the command line arguments
      */
@@ -395,6 +455,8 @@ public class SmartWorksWindow extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> Case;
+    private javax.swing.JCheckBox Prepay;
+    private javax.swing.JCheckBox Service;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
@@ -409,6 +471,7 @@ public class SmartWorksWindow extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jframe;
     private javax.swing.JMenuBar menuBar;

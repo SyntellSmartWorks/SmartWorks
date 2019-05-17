@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [S3 Test - Suite]">
+  <test name="SmartWorks Vending(failed)">
+    <classes>
+      <class name="smartworks.SmartWorks_Collect_Vending">
+        <methods>
+          <include name="openBrowser"/>
+          <include name="terminate"/>
+          <include name="addcus"/>
+        </methods>
+      </class> <!-- smartworks.SmartWorks_Collect_Vending -->
+    </classes>
+  </test> <!-- SmartWorks Vending(failed) -->
+</suite> <!-- Failed suite [S3 Test - Suite] -->

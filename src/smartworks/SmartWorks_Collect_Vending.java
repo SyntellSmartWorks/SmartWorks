@@ -14,8 +14,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import static smartworks.SmartWorks_Auxiliaries.dr;
 
 /**
  *
@@ -24,8 +26,8 @@ import org.testng.annotations.Test;
 public class SmartWorks_Collect_Vending extends SmartWorksWindow
 {
     public static WebDriver dr;
-    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\Add Customer.html");
-    ExtentTest test = extent.startTest("Add Customer");
+    ExtentReports extent = new ExtentReports("C:\\Users\\Reece.SYNTELL\\Documents\\Reports\\SmartWorks Collect Vend.html");
+    ExtentTest test = extent.startTest("Collect Vend");
     /**
      * @param args the command line arguments 01010101011
      */
@@ -35,7 +37,7 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
         {
             System.setProperty("webdriver.chrome.driver", "C:\\SmartWorks\\SmartWorks\\chromedriver.exe");
             //String URL = ip;
-            String defURL = "http://syn-tst-net-smw.syntell.net/STELLBTEST/WA/SB/AppStart/Login.aspx";
+            String defURL = "http://syn-tst-net-smw.syntell.net/BREEDETEST/WA/SB/AppStart/Login.aspx";
             dr = new ChromeDriver();
         
           dr.get(defURL);
@@ -53,7 +55,7 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
                 {
                     //Thread.sleep(500);
                     String text = dr.findElement(By.xpath("//span[@class = 'ErrorWrap']")).getText();
-                    test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                   // test.log(LogStatus.PASS, "Successfully navigated to Meters");
                 }
                 
                 if(dr.findElements(By.xpath("//span[contains(text(), ' Customer Support Role')]")).size() > 0)
@@ -61,7 +63,7 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
                       Thread.sleep(500);
                       dr.findElement(By.xpath("//*[@id='top-nav']/ul/li/a/span/i")).click();
                       dr.findElement(By.xpath("//a[text() = ' Vendor']")).click();
-                      test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                     // test.log(LogStatus.PASS, "Successfully navigated to Meters");
                     }
             }
         }
@@ -78,7 +80,7 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//span[text() = 'Revenue Collection']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully Revenue collection");
             }
             else
             {
@@ -88,8 +90,8 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
             if(dr.findElements(By.xpath("//input[@id = 'txtSearchMsno']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//input[@id = 'txtSearchMsno']")).sendKeys("01076035144");
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                dr.findElement(By.xpath("//input[@id = 'txtSearchMsno']")).sendKeys("01027550555");
+                test.log(LogStatus.PASS, "Successfully entered Meter Number");
             }
             else
             {
@@ -100,29 +102,40 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@value= 'Search']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully successfully searched for Meter Number");
             }
             else
             {
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//input[@id= 'txtAmount']")).size() > 0)
+            if(dr.findElements(By.xpath("//*[@id='divAmount']/div/input")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//input[@id= 'txtAmount']")).sendKeys("100");
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                dr.findElement(By.xpath("//*[@id='divAmount']/div/input")).sendKeys("100");
+                test.log(LogStatus.PASS, "Successfully entered Collection amount");
             }
             else
             {
                 test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
             
-            if(dr.findElements(By.xpath("//a[@id= 'btnCollect']")).size() > 0)
+            if(dr.findElements(By.xpath("//span[text()= 'Collect']")).size() > 0)
             {
                 Thread.sleep(500);
-                dr.findElement(By.xpath("//a[@id= 'btnCollect']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                dr.findElement(By.xpath("//span[text()= 'Collect']")).click();
+                test.log(LogStatus.PASS, "Successfully clicked on Collect");
+            }
+            else
+            {
+                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+            }
+            
+            if(dr.findElements(By.xpath("//input[@id= 'btnModalChangeCalcOk']")).size() > 0)
+            {
+                Thread.sleep(500);
+                dr.findElement(By.xpath("//input[@id= 'btnModalChangeCalcOk']")).click();
+                test.log(LogStatus.PASS, "Successfully clicked Ok for Tender amount ");
             }
             else
             {
@@ -133,7 +146,7 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
             {
                 Thread.sleep(500);
                 dr.findElement(By.xpath("//input[@id= 'btnModalConfirmOkNoPostBack']")).click();
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+               // test.log(LogStatus.PASS, "Successfully navigated to Meters");
             }
             else
             {
@@ -146,12 +159,22 @@ public class SmartWorks_Collect_Vending extends SmartWorksWindow
                 Robot r = new Robot();
                 r.keyPress(KeyEvent.VK_ESCAPE);
                 r.keyRelease(KeyEvent.VK_ESCAPE);
-                test.log(LogStatus.PASS, "Successfully navigated to Meters");
+                test.log(LogStatus.PASS, "Successfully completet Collection Vend");
             }
             else
             {
-                test.log(LogStatus.FAIL, "Failed to navigate to Meters");
+            //    test.log(LogStatus.FAIL, "Failed to navigate to Meters");
             }
+    }
+    
+    @AfterTest
+    void terminate() throws Exception
+    {
+     // SmartWorks_Logout logout = new SmartWorks_Logout();
+     // logout.logout();
+      extent.endTest(test);
+      extent.flush();
+      dr.quit();
     }
 
    /* @DataProvider(name="empLogin")
